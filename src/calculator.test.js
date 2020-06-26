@@ -37,7 +37,7 @@ describe('Calculator', () => {
 
       const result = sut.inputDigit(1)
 
-      expect(result).toEqual('1 + 1')
+      expect(result).toEqual('1')
     })
 
     it('combines multiple consecutive inputs of numbers', () => {
