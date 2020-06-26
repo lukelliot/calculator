@@ -2,6 +2,10 @@ class Calculator {
   constructor() {
     this.memory = []
   }
+
+  input(num) {
+    this.memory.push(num)
+  }
 }
 
 describe('Calculator', () => {
