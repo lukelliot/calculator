@@ -102,7 +102,33 @@ describe('Calculator', () => {
       })
     })
 
-    describe('operators', () => {
+    it('throws Error if there is no digit stored in memory', () => {
+      const sut = new Calculator()
+
+      expect(() => sut.inputOp('-')).not.toThrowError(TypeError)
+      expect(() => sut.inputOp('-')).toThrowError()
+    })
+  })
+
+  describe('#equals', () => {
+    it('calculates equation stored in memory', () => {
+      const sut = new Calculator()
+      sut.memory = [1, '+', 1]
+
+      const result = sut.equals()
+
+      expect(result).toEqual('2')
+    })
+
+    it('throws if the equation cannot be calculated', () => {
+      const sut = new Calculator()
+      sut.memory = [1, '+']
+
+      expect(() => sut.equals()).not.toThrowError(TypeError)
+      expect(() => sut.equals()).toThrowError()
+    })
+
+    describe('available operators', () => {
       it('+', () => {
         const sut = new Calculator()
 
@@ -146,32 +172,6 @@ describe('Calculator', () => {
 
         expect(result).toEqual('1')
       })
-    })
-
-    it('throws Error if there is no digit stored in memory', () => {
-      const sut = new Calculator()
-
-      expect(() => sut.inputOp('-')).not.toThrowError(TypeError)
-      expect(() => sut.inputOp('-')).toThrowError()
-    })
-  })
-
-  describe('#equals', () => {
-    it('calculates equation stored in memory', () => {
-      const sut = new Calculator()
-      sut.memory = [1, '+', 1]
-
-      const result = sut.equals()
-
-      expect(result).toEqual('2')
-    })
-
-    it('throws if the equation cannot be calculated', () => {
-      const sut = new Calculator()
-      sut.memory = [1, '+']
-
-      expect(() => sut.equals()).not.toThrowError(TypeError)
-      expect(() => sut.equals()).toThrowError()
     })
   })
 })
