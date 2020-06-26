@@ -57,8 +57,7 @@ describe('Calculator', () => {
       it('stores the input digit as a new numeral', () => {
         const sut = new Calculator()
 
-        sut.inputDigit(1)
-        sut.inputOp('+')
+        sut.memory = [1, '+']
         const result = sut.inputDigit(1)
 
         expect(result).toEqual('1 + 1')
@@ -67,9 +66,7 @@ describe('Calculator', () => {
       it('can continue adding digits to second numeral', () => {
         const sut = new Calculator()
 
-        sut.inputDigit(1)
-        sut.inputOp('+')
-        sut.inputDigit(1)
+        sut.memory = [1, '+', 1]
         const result = sut.inputDigit(1)
 
         expect(result).toEqual('1 + 11')
@@ -78,11 +75,18 @@ describe('Calculator', () => {
   })
 
   describe('#inputOp', () => {
+    it('throws on any invalid operator input', () => {
+      const sut = new Calculator()
+
+      expect(() => sut.inputOp('invalid')).not.toThrowError(TypeError)
+      expect(() => sut.inputOp('invalid')).toThrowError()
+    })
+
     describe('when there is a single digit in memory', () => {
       it('returns a string of the partial equation', () => {
         const sut = new Calculator()
 
-        sut.inputDigit(1)
+        sut.memory = [1]
         const result = sut.inputOp('+')
 
         expect(result).toEqual('1 +')
@@ -93,9 +97,7 @@ describe('Calculator', () => {
       it('returns calculated string with new input operator', () => {
         const sut = new Calculator()
 
-        sut.inputDigit(1)
-        sut.inputOp('+')
-        sut.inputDigit(1)
+        sut.memory = [1, '+', 1]
         const result = sut.inputOp('+')
 
         expect(result).toEqual('2 +')
@@ -132,9 +134,7 @@ describe('Calculator', () => {
       it('+', () => {
         const sut = new Calculator()
 
-        sut.inputDigit(1)
-        sut.inputOp('+')
-        sut.inputDigit(1)
+        sut.memory = [1, '+', 1]
         const result = sut.equals()
 
         expect(result).toEqual('2')
@@ -143,9 +143,7 @@ describe('Calculator', () => {
       it('-', () => {
         const sut = new Calculator()
 
-        sut.inputDigit(1)
-        sut.inputOp('-')
-        sut.inputDigit(1)
+        sut.memory = [1, '-', 1]
         const result = sut.equals()
 
         expect(result).toEqual('0')
@@ -154,9 +152,7 @@ describe('Calculator', () => {
       it('*', () => {
         const sut = new Calculator()
 
-        sut.inputDigit(10)
-        sut.inputOp('*')
-        sut.inputDigit(10)
+        sut.memory = [10, '*', 10]
         const result = sut.equals()
 
         expect(result).toEqual('100')
@@ -165,9 +161,7 @@ describe('Calculator', () => {
       it('/', () => {
         const sut = new Calculator()
 
-        sut.inputDigit(10)
-        sut.inputOp('/')
-        sut.inputDigit(10)
+        sut.memory = [10, '/', 10]
         const result = sut.equals()
 
         expect(result).toEqual('1')
