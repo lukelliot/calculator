@@ -53,8 +53,8 @@ describe('Calculator', () => {
       expect(resultOfFourDigits).toEqual('1234')
     })
 
-    describe('when an operator has been stored', () => {
-      it('returns a string of the equation', () => {
+    describe('when an operator and digit has been stored', () => {
+      it('stores the input digit as a new numeral', () => {
         const sut = new Calculator()
 
         sut.inputDigit(1)
