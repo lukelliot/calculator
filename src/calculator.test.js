@@ -32,7 +32,7 @@ describe('Calculator', () => {
       expect(() => sut.inputDigit(-1)).toThrow()
     })
 
-    it('registers and returns a single number', () => {
+    it('displays the digit', () => {
       const sut = new Calculator()
 
       const returnedValue = sut.inputDigit(3)
@@ -40,7 +40,7 @@ describe('Calculator', () => {
       expect(returnedValue).toEqual('3')
     })
 
-    it('returns a string of multiple consecutive numbers', () => {
+    it('displays a string of multiple consecutive numbers', () => {
       const sut = new Calculator()
 
       sut.inputDigit(1)
@@ -54,7 +54,7 @@ describe('Calculator', () => {
     })
 
     describe('when an operator and digit has been stored', () => {
-      it('stores the input digit as a new numeral', () => {
+      it('returns the equation', () => {
         const sut = new Calculator()
 
         sut.memory = [1, '+']
@@ -80,6 +80,10 @@ describe('Calculator', () => {
 
       expect(() => sut.inputOp('invalid')).not.toThrowError(TypeError)
       expect(() => sut.inputOp('invalid')).toThrowError()
+      expect(() => sut.inputOp('-')).not.toThrowError()
+      expect(() => sut.inputOp('/')).not.toThrowError()
+      expect(() => sut.inputOp('+')).not.toThrowError()
+      expect(() => sut.inputOp('*')).not.toThrowError()
     })
 
     describe('when there is a single digit in memory', () => {
