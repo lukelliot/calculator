@@ -32,15 +32,18 @@ describe('Calculator', () => {
       expect(() => sut.inputDigit(-1)).toThrow()
     })
 
-    it('displays the digit', () => {
+    it('returns the current calculation', () => {
       const sut = new Calculator()
 
-      const returnedValue = sut.inputDigit(3)
+      const oneDigit = sut.inputDigit(1)
+      sut.memory.push('+')
+      const twoDigits = sut.inputDigit(1)
 
-      expect(returnedValue).toEqual('3')
+      expect(oneDigit).toEqual('1')
+      expect(twoDigits).toEqual('1 + 1')
     })
 
-    it('displays a string of multiple consecutive numbers', () => {
+    it('combines multiple consecutive inputs of numbers', () => {
       const sut = new Calculator()
 
       sut.inputDigit(1)
@@ -53,23 +56,33 @@ describe('Calculator', () => {
       expect(resultOfFourDigits).toEqual('1234')
     })
 
-    describe('when an operator and digit has been stored', () => {
-      it('returns the equation', () => {
+    describe('when multiple consecutive calls are made', () => {
+      it('combines digits', () => {
+        const sut = new Calculator()
+
+        sut.inputDigit(1)
+        const resultOfTwoDigits = sut.inputDigit(2)
+        const resultOfThreeDigits = sut.inputDigit(3)
+        const resultOfFourDigits = sut.inputDigit(4)
+
+        expect(resultOfTwoDigits).toEqual('12')
+        expect(resultOfThreeDigits).toEqual('123')
+        expect(resultOfFourDigits).toEqual('1234')
+      })
+
+      it('combines digits after an operator', () => {
         const sut = new Calculator()
 
         sut.memory = [1, '+']
-        const result = sut.inputDigit(1)
+        const resultOfOneDigit = sut.inputDigit(1)
+        const resultOfTwoDigits = sut.inputDigit(2)
+        const resultOfThreeDigits = sut.inputDigit(3)
+        const resultOfFourDigits = sut.inputDigit(4)
 
-        expect(result).toEqual('1 + 1')
-      })
-
-      it('can continue adding digits to second numeral', () => {
-        const sut = new Calculator()
-
-        sut.memory = [1, '+', 1]
-        const result = sut.inputDigit(1)
-
-        expect(result).toEqual('1 + 11')
+        expect(resultOfOneDigit).toEqual('1 + 1')
+        expect(resultOfTwoDigits).toEqual('1 + 12')
+        expect(resultOfThreeDigits).toEqual('1 + 123')
+        expect(resultOfFourDigits).toEqual('1 + 1234')
       })
     })
   })
