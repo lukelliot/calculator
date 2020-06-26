@@ -63,8 +63,6 @@ describe('Calculator', () => {
 
         expect(result).toEqual('1 + 1')
       })
-
-
     })
   })
 
