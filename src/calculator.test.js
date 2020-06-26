@@ -32,15 +32,12 @@ describe('Calculator', () => {
       expect(() => sut.inputDigit(-1)).toThrow()
     })
 
-    it('returns the current calculation', () => {
+    it('registers a single digit', () => {
       const sut = new Calculator()
 
-      const oneDigit = sut.inputDigit(1)
-      sut.memory.push('+')
-      const twoDigits = sut.inputDigit(1)
+      const result = sut.inputDigit(1)
 
-      expect(oneDigit).toEqual('1')
-      expect(twoDigits).toEqual('1 + 1')
+      expect(result).toEqual('1 + 1')
     })
 
     it('combines multiple consecutive inputs of numbers', () => {
