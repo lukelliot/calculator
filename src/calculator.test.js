@@ -63,6 +63,17 @@ describe('Calculator', () => {
 
         expect(result).toEqual('1 + 1')
       })
+
+      it('can continue adding digits to second numeral', () => {
+        const sut = new Calculator()
+
+        sut.inputDigit(1)
+        sut.inputOp('+')
+        sut.inputDigit(1)
+        const result = sut.inputDigit(1)
+
+        expect(result).toEqual('1 + 11')
+      })
     })
   })
 
