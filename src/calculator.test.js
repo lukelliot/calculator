@@ -1,10 +1,16 @@
 class Calculator {
   constructor() {
-    this.memory = []
+    this.memory = [0]
   }
 
   inputDigit(num) {
-    this.memory.push(num)
+    if (num < 0 || num >= 10 ) {
+      throw new Error('invalid input, input only 0-9') 
+    }
+    const newNum = (this.memory[0] * 10) + num
+    this.memory[0] = newNum
+    
+    return `${newNum}`
   }
 }
 
@@ -12,11 +18,6 @@ describe('Calculator', () => {
   test('#constructor', () => {
     const sut = new Calculator()
     expect(sut).toBeInstanceOf(Calculator)
-  })
-
-  it('instantiates with memory as an empty Array', () => {
-    const sut = new Calculator()
-    expect(sut.memory).toEqual([])
   })
 
   describe('#inputDigit', () => {
