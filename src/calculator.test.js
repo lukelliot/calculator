@@ -169,5 +169,60 @@ describe('Calculator', () => {
         expect(result).toEqual('1')
       })
     })
+
+    describe('#clear', () => {
+      it('clears memory', () => {
+        const sut = new Calculator()
+
+        sut.memory = [1, '+', 1]
+        const result = sut.clear()
+
+        expect(result).toEqual('0')
+      })
+    })
+
+    xdescribe('#decimal', () => {
+      describe('when the memory is empty', () => {
+        it('adds a decimal to 0', () => {
+          const sut = new Calculator()
+          
+          const result = sut.decimal()
+          
+          expect(result).toEqual('0.')
+        })
+      })
+      
+      describe('when memory has a single number', () => {
+        it('adds a decimal to first number', () => {
+          const sut = new Calculator()
+
+          sut.memory = [1]
+          const oneDigit = sut.decimal()
+          sut.memory = [11]
+          const twoDigits = sut.decimal()
+          sut.memory = [111]
+          const threeDigits = sut.decimal()
+
+          expect(oneDigit).toEqual('1.')
+          expect(twoDigits).toEqual('11.')
+          expect(threeDigits).toEqual('111.')
+        })
+      })
+
+      describe('when memory has an operator', () => {
+        it('adds a decimal to second number', () => {
+          const sut = new Calculator()
+
+          sut.memory = [1, '+']
+          const noDigit = sut.decimal()
+
+          sut.memory = [1, '+', 1]
+          const oneDigit = sut.decimal()
+
+          expect(noDigit).toEqual('1 + 0.')
+          expect(oneDigit).toEqual('1 + 1.')
+        })
+      })
+    })
   })
 })
