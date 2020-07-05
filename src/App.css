@@ -1,21 +1,23 @@
 :root {
   --calc-width: 350px;
-  --calc-height: 500px;
+  --calc-height: 600px;
 }
+
 .App {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
 .calcBorder {
+  height: 100vh;
   width: var(--calc-width);
   height: var(--calc-height);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   border: 3px solid rgb(2, 24, 2);
+  border-radius: 8px;
 }
 
 .display {
@@ -28,9 +30,10 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  border-radius: 8px;
 }
 
-.display > * {
+.display>* {
   margin-right: 20px;
 }
 
@@ -38,11 +41,12 @@
   display: grid;
   background-color: orchid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   text-align: center;
-  gap: 2px;
+  gap: 3px;
   height: var(--calc-width);
   width: var(--calc-width);
+  border-top: 3px solid orchid;
 }
 
 .buttons>* {
@@ -51,4 +55,11 @@
   justify-content: center;
   align-items: center;
   font-size: 27px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.buttons>*:hover {
+  background-color: rgb(211, 131, 208);
+  /* color: palegreen; */
 }
