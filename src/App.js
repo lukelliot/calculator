@@ -80,7 +80,7 @@ function App() {
           <div onClick={inputOperator}>+</div>
           <div />
           <div onClick={inputDigit}>0</div>
-          <div onClick={inputDecimal}>.</div>
+          <div />
           <div onClick={inputEquals}>=</div>
         </div>
       </div>
