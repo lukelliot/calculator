@@ -62,26 +62,26 @@ function App() {
           <div>{equation}</div>
         </div>
         <div className={'buttons'}>
-          <div />
-          <div onClick={inputOperator}>^</div>
-          <div onClick={clear}>C</div>
-          <div onClick={inputOperator}>/</div>
+          <div className={'operators'} onClick={clear}>C</div>
+          <div className={'empty'} />
+          <div className={'empty'} />
+          <div className={'operators'} onClick={inputOperator}>^</div>
           <div onClick={inputDigit}>7</div>
           <div onClick={inputDigit}>8</div>
           <div onClick={inputDigit}>9</div>
-          <div onClick={inputOperator}>*</div>
+          <div className={'operators'} onClick={inputOperator}>/</div>
           <div onClick={inputDigit}>4</div>
           <div onClick={inputDigit}>5</div>
           <div onClick={inputDigit}>6</div>
-          <div onClick={inputOperator}>-</div>
+          <div className={'operators'} onClick={inputOperator}>*</div>
           <div onClick={inputDigit}>1</div>
           <div onClick={inputDigit}>2</div>
           <div onClick={inputDigit}>3</div>
-          <div onClick={inputOperator}>+</div>
-          <div />
+          <div className={'operators'} onClick={inputOperator}>-</div>
+          <div className={'empty'} />
           <div onClick={inputDigit}>0</div>
-          <div />
-          <div onClick={inputEquals}>=</div>
+          <div className={'operators'} onClick={inputEquals}>=</div>
+          <div className={'operators'} onClick={inputOperator}>+</div>
         </div>
       </div>
     </div>

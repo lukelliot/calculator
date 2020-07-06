@@ -16,7 +16,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 3px solid rgb(2, 24, 2);
+  border: 5px solid rgb(2, 24, 2);
   border-radius: 8px;
 }
 
@@ -50,7 +50,7 @@
 }
 
 .buttons>* {
-  background-color: palegreen;
+  background-color: rgb(109, 255, 109);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,5 +61,12 @@
 
 .buttons>*:hover {
   background-color: rgb(211, 131, 208);
-  /* color: palegreen; */
+}
+
+.operators {
+  background-color: palegreen;
+}
+
+.empty {
+  background-color: rgb(109, 255, 109);
 }
